@@ -1,0 +1,113 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+using namespace std;
+
+int mayor(int a, int b, int c);
+int ciclo(int x);
+double pesototal(int cantidadProductos);
+double numpares(int n);
+
+int main() {
+    int opcion;
+
+    do {
+        cout << "Elige una opcion:\n";
+        cout << "1. Determinar el mayor de tres numeros\n";
+        cout << "2. Calcular la serie con ciclo For\n";
+        cout << "3. Calcular el peso total de productos\n";
+        cout << "4. Calcular el promedio de n numeros pares\n";
+        cout << "0. Salir\n";
+        cout << "Opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1: {
+            int a = 0, b = 0, c = 0, m;
+            cout << "Introduce el primer numero: ";
+            cin >> a;
+            cout << "Introduce el segundo numero: ";
+            cin >> b;
+            cout << "Introduce el tercer numero: ";
+            cin >> c;
+            cout << "El mayor es: " << mayor(a, b, c);
+            break;
+        }
+        case 2: {
+            int x;
+            cout << "Introduce el valor de x: ";
+            cin >> x;
+            ciclo(x);
+            break;
+        }
+        case 3: {
+            int cantidad;
+            cout << "¿Cuantos productos deseas ingresar? ";
+            cin >> cantidad;
+            pesototal(cantidad);
+            break;
+        }
+        case 4: {
+            int cantidadn;
+            cout << "Cuantos numeros pares desea ingresar? ";
+            cin >> cantidadn;
+            cout << "El promedio es: " << numpares(cantidadn) << endl;
+        }
+        case 0:
+            cout << "¡Hasta luego!\n";
+            return 0;
+            break;
+        default:
+            cout << "Opcion no valida. Intenta de nuevo.\n";
+            break;
+        }
+        cout << endl;
+        system("pause");
+        system("cls");
+
+    } while (opcion != 0);
+
+    return 0;
+}
+
+int mayor(int a, int b, int c) {
+    if (a == b && b == c) {
+        return a;
+    }
+    else if (a > b && a > c) {
+        return a;
+    }
+    else if (b > a && b > c) {
+        return b;
+    }
+    else {
+        return c;
+    }
+}
+
+int ciclo(int x) {
+    double suma = 0;
+    for (int b = 1; b <= 10; ++b) {
+        suma += pow(x, b);
+    }
+    return suma;
+}
+
+double pesototal(int cantidadProductos) {
+    double pesoTotal = 0.0;
+    for (int i = 1; i <= cantidadProductos; i++) {
+        double peso;
+        cout << "Ingresa el peso del producto " << i << " (en gramos): ";
+        cin >> peso;
+        pesoTotal += peso;
+    }
+    return pesoTotal;
+}
+double numpares(int n) {
+    double suma = 0;
+    int p;
+    for (int i = 1; i <= n; i++) {
+        suma += i * 2;
+    }
+    return suma/n;
+}
