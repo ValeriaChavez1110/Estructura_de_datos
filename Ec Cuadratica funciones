@@ -30,7 +30,7 @@ int main()
         cout << "Las soluciones imaginarias son: " << endl;
         x1 = solucionimag(a, b, c, d, x2);
         cout << "x1= " << x1 <<"+"<< x2<<"i" << endl;
-        cout << "x2= " << x2 <<"+"<<x2<<"i" << endl;
+        cout << "x2= " << x1 <<"+"<<x2<<"i" << endl;
     }
     return 0;
 }
