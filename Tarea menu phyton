@@ -1,0 +1,61 @@
+import math
+
+def factorial(n):
+    pass
+
+def suma_cuadrados(n):
+    pass
+
+def serie(x, n):
+    pass
+
+
+while True:
+    print("\nMenu")
+    print("1. Factorial")
+    print("2. Suma de cuadrados")
+    print("3. Serie x^n / n!")
+    print("0. Salir")
+
+    opcion = input("Seleccione una opción: ")
+
+    if opcion == "1":
+        num = int(input("Ingrese un número: "))
+        print("El factorial es:", factorial(num))
+
+    elif opcion == "2":
+        num = int(input("Ingrese un número: "))
+        print("La suma de cuadrados hasta", num, "es:", suma_cuadrados(num))
+
+    elif opcion == "3":
+        x = float(input("Ingrese el valor de x: "))
+        n = int(input("Ingrese el valor de n: "))
+        print("El valor de la serie es:", serie(x, n))
+
+    elif opcion == "0":
+        print("Salir")
+        break
+
+    else:
+        print("Error")
+
+
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+def suma_cuadrados(n):
+    if n == 1:
+        return 1
+    else:
+        return n*n + suma_cuadrados(n - 1)
+
+
+def serie(x, n):
+    if n == 1:
+        return x / factorial(1)
+    else:
+        return (x**n) / factorial(n)
