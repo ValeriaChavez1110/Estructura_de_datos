@@ -1,0 +1,133 @@
+#include <iostream>
+#include "Vector.h"
+
+using namespace std;
+
+Vector::Vector(){}
+
+Vector::~Vector(){}
+
+void Vector::cargarVector(int vec[], int n){
+    for(int i=0;i<n;i++){
+        cout<<"Ingrese elemento ["<<i<<"]: ";
+        cin>>vec[i];
+    }
+}
+
+void Vector::mostrarVector(int vec[], int n){
+    cout<<"Vector: ";
+    for(int i=0;i<n;i++){
+        cout<<vec[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void Vector::ordenarVector(int vec[], int n){
+    int aux;
+
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-1-i;j++){
+            if(vec[j] > vec[j+1]){
+                aux = vec[j];
+                vec[j] = vec[j+1];
+                vec[j+1] = aux;
+            }
+        }
+    }
+
+    cout<<"Vector ordenado correctamente"<<endl;
+}
+
+void Vector::eliminarDuplicados(int vec[], int &n){
+
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+
+            if(vec[i]==vec[j]){
+
+                for(int k=j;k<n-1;k++){
+                    vec[k]=vec[k+1];
+                }
+
+                n--;
+                j--;
+            }
+        }
+    }
+
+    cout<<"Duplicados eliminados"<<endl;
+}
+#ifndef VECTOR_H
+#define VECTOR_H
+
+class Vector
+{
+public:
+    Vector();
+    ~Vector();
+
+    void cargarVector(int vec[], int n);
+    void mostrarVector(int vec[], int n);
+    void ordenarVector(int vec[], int n);
+    void eliminarDuplicados(int vec[], int &n); // nuevo metodo
+};
+
+#endif
+#include <iostream>
+#include "Vector.h"
+
+#define MAX 10
+
+using namespace std;
+
+int main(){
+
+	int vec[MAX], n, op;
+	Vector vector1;
+
+	do {
+		cout<<"Ingrese el tamanio del vector : ";
+		cin>>n;
+	} while ((n>MAX) || (n<=0));
+
+	do{
+		cout<<"-----       M E N U        -----"<<endl;
+		cout<<"|1.- Cargar Vector.            |"<<endl;
+		cout<<"|2.- Mostrar Vector.           |"<<endl;
+		cout<<"|3.- Ordenar Vector.           |"<<endl;
+		cout<<"|4.- Eliminar duplicados.      |"<<endl;
+		cout<<"|0.- Salir                     |"<<endl;
+		cout<<"--------------------------------"<<endl;
+		cout<<"Elija una opcion: ";
+		cin>>op;
+
+		switch(op){
+
+		case 1:
+			vector1.cargarVector(vec, n);
+			break;
+
+		case 2:
+			vector1.mostrarVector(vec, n);
+			break;
+
+		case 3:
+			vector1.ordenarVector(vec, n);
+			break;
+
+		case 4:
+			vector1.eliminarDuplicados(vec, n);
+			break;
+
+		case 0:
+			cout<<"Salir"<<endl;
+			break;
+
+		default:
+			cout<<"Error: Opcion no valida..."<<endl;
+		}
+
+	}while(op!=0);
+
+	return 0;
+}
