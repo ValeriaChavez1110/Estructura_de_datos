@@ -3,14 +3,15 @@
 
 using namespace std;
 
-void serie(int n);
+void serie(int n, int num);
 void cargar(int vec[], int n);
 void mostrar(int vec[], int n);
-void cargarMatriz(int mat[MAX][MAX], int m, int n, int tam);
+void cargarMatriz(int mat[MAX][MAX], int m, int n);
 
 int main()
 {
-    int opcion,n,vec[MAX], m, n2, mat[MAX][MAX];
+    int opcion, n, vec[MAX], m, n2, mat[MAX][MAX];
+
     do {
         cout << "MENU" << endl;
         cout << "1. Serie recursiva" << endl;
@@ -18,57 +19,83 @@ int main()
         cout << "3. Cargar matriz" << endl;
         cout << "0. Salir" << endl;
         cin >> opcion;
+
         switch (opcion){ 
         case 1: {
-            cout << "Coloque los elementos de la serie: ";
+            cout << "Ingrese n: ";
             cin >> n;
-            serie(n);
-            }
-                break;
+            serie(n, 0);
+            cout << endl;
+        }
+        break;
+
         case 2: {
-            cout << "Coloque los elementos de la serie: ";
+            cout << "Ingrese n: ";
             cin >> n;
             cargar(vec, n);
-            }
-                break;
-        case 3: {
-            cout << "Coloque los elementos de la serie: ";
-            cin >> n;
-            mostrar(vec, n);
-            cout << "Coloque el tamano de la matriz: " << endl;
-            cout << "Fila: ";
-            cin >> m;
-            cout << "Columna: ";
-            cin >> n2;
-            cargarMatriz(mat, m, n2, n);
-            }
-                break;
-        case 0: cout << "Salir" << endl;
-                break;
-        default: cout<<"Error"<<endl;
         }
+        break;
+
+        case 3: {
+            cout << "Ingrese filas: ";
+            cin >> m;
+            cout << "Ingrese columnas: ";
+            cin >> n2;
+
+            cargarMatriz(mat, m, n2);
+        }
+        break;
+
+        case 0:
+            cout << "Salir" << endl;
+            break;
+
+        default:
+            cout << "Error" << endl;
+        }
+
     } while (opcion != 0);
+
+    return 0;
 }
-void serie(int n) {
-    if (num == 0) {
+
+void serie(int n, int num) {
+    if (num >= n) {
         return;
+    } else {
+        cout << num << " ";
+        serie(n, num + 3);
     }
-    else {
-        cout << n << endl;
-    }
-    serie(n - 1, num + 3);
 }
+
 void cargar(int vec[], int n) {
-    vec[0] = 1;
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++) {
         vec[i] = i + 3;
+    }
     mostrar(vec, n);
 }
+
 void mostrar(int vec[], int n) {
-    for (int j = 0; j < n; j++)
-        cout << vec[j];
-
+    for (int j = 0; j < n; j++) {
+        cout << vec[j] << " ";
+    }
+    cout << endl;
 }
-void cargarMatriz(int mat[MAX][MAX], int m, int n, int tam) {
 
+void cargarMatriz(int mat[MAX][MAX], int m, int n) {
+    // Carga de valores
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << "Ingrese elemento [" << i << "][" << j << "]: ";
+            cin >> mat[i][j];
+        }
+    }
+
+    cout << "Matriz:" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
