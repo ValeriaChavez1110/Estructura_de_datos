@@ -1,0 +1,185 @@
+#define MAX 100
+using TipoDato = int;
+/*************************************************************/
+//                      pila.h
+/*************************************************************/
+class Pilaestatica
+{
+private:
+    int pila[MAX];
+    int cima;
+
+public:
+    Pilaestatica();
+    bool Apilar(TipoDato& elemento);
+    bool Desapilar();
+    bool CimaPila(TipoDato& elemento);
+    void LimpiarPila();
+    void VerPila();
+    bool PilaVacia();
+    bool Iguales(Pilaestatica p);
+
+};
+//cpp
+#include "Pilaestatica.h"
+#include <iostream>
+
+using namespace std;
+
+
+Pilaestatica::Pilaestatica()
+{
+    cima = -1;
+}
+
+bool Pilaestatica::Apilar(TipoDato& elemento)
+{
+    bool res;
+    if (cima == MAX - 1)
+    {
+        cout << "Desbordamiento de Pila (Overflow)" << endl;
+        res = false;
+    }
+    else
+
+    {
+        cima++;
+        pila[cima] = elemento;
+        res = true;
+    }
+    return res;
+
+
+}
+
+bool Pilaestatica::Desapilar()
+{
+    bool res;
+    if (cima == -1)
+    {
+        cerr << "Se esta intentando quitar un elemento de una pila vacia (underflow)" << endl;
+        res = false;
+    }
+    else
+
+    {
+        cima--;
+        res = true;
+    }
+    return res;
+
+
+}
+
+void Pilaestatica::VerPila()
+{
+    for (int i = 0; i <= cima; i++)
+        cout << pila[i] << endl;
+
+}
+
+
+bool Pilaestatica::CimaPila(TipoDato& elemento)
+{
+    bool res;
+    if (PilaVacia())//(cima == -1)
+    {
+        cerr << "Se esta intentando quitar un elemento de una pila vacia (underflow)" << endl;
+        res = false;
+    }
+    else
+
+    {
+        elemento= pila[cima];
+        //cima--;
+        res = true;
+    }
+
+    return res;
+
+
+}
+
+bool Pilaestatica::PilaVacia()
+{
+    return cima == -1;
+}
+
+void Pilaestatica::LimpiarPila()
+{
+    cima = -1;
+}
+
+
+bool Pilaestatica::Iguales(Pilaestatica p)
+{
+    if (cima != p.cima)
+        return false;
+        for (int i = 0; i <= cima; i++)
+            if (pila[i] != p.pila[i])
+                return false;
+    return true;
+}
+//int main
+#include <iostream>
+#include "Pilaestatica.h"
+#include "stdlib.h"
+using namespace std;
+
+int main() {
+	int opcion, r, x;
+	Pilaestatica p1, p2;
+	do {
+		cout << "MENU" << endl;
+		cout << "1. Apilar" << endl;
+		cout << "2. Desapilar" << endl;
+		cout << "3. Ver el elemento del " << endl;
+		cout << "4. Pila vacias " << endl;
+		cout << "5. Iguales dos pilas" << endl;
+		cout << "6. Ver pilas" << endl;
+		cout << "7. Limiar pila" << endl;
+		cout << "0. Salir" << endl;
+		cout << "Elija una opcion: ";
+		cin >> opcion;
+		switch(opcion) {
+			case 1:
+				cout << "Ingrese el dato a apilar: ";
+				cin >> r;
+				if (p1.Apilar(r))
+					cout << "Se apilo correctamente" << endl;
+				break;
+			case 2:
+				if (p1.Desapilar())
+					cout << "Se desapilo correctamente" << endl;
+				break;
+			case 3: 
+				if (p1.CimaPila(r))
+					cout << "El elemento de la pila es" << r << endl;
+				break;
+			case 4:
+				if (p1.PilaVacia())
+					cout << "La pila esta vacia" << endl;
+				else
+					cout << "La pila tiene elementos" << endl;
+				break;
+			case 5:
+				if (p2.Apilar(x));
+				if (p1.Iguales(p2))
+					cout << "son iguales" << endl;
+				else
+					cout << "son diferentes" << endl;
+				break;
+			case 6:
+				p1.VerPila();
+				break;
+			case 7:
+				p1.LimpiarPila();
+				break;
+			case 0: cout << "Salir" << endl;
+				break;
+			default: cout << "error";
+		}
+		system("pause");
+		system("cls");
+	} while (opcion != 0);
+}
