@@ -1,0 +1,70 @@
+#include "DDQueue.h"
+
+// Constructor
+DDQueue::DDQueue() {
+    cabeza = nullptr;
+    cola = nullptr;
+    items = 0;
+}
+
+// Destructor
+DDQueue::~DDQueue() {
+    while (!empty()) {
+        get_front();
+    }
+}
+
+// Insertar atrás
+void DDQueue::put_back(DATA_TYPE valor) {
+    Nodo* temp = new Nodo(valor);
+
+    if (!cabeza) {
+        cabeza = cola = temp;
+    }
+    else {
+        cola->next = temp;
+        temp->prev = cola;
+        cola = temp;
+    }
+    items++;
+}
+
+// Insertar adelante
+void DDQueue::put_front(DATA_TYPE valor) {
+    Nodo* temp = new Nodo(valor);
+
+    if (!cabeza) {
+        cabeza = cola = temp;
+    }
+    else {
+        cabeza->prev = temp;
+        temp->next = cabeza;
+        cabeza = temp;
+    }
+    items++;
+}
+
+// Sacar del frente
+DATA_TYPE DDQueue::get_front() {
+    if (empty()) return -1;
+
+    DATA_TYPE valor = cabeza->data;
+    Nodo* temp = cabeza;
+
+    cabeza = cabeza->next;
+
+    if (cabeza)
+        cabeza->prev = nullptr;
+    else
+        cola = nullptr;
+
+    delete temp;
+    items--;
+
+    return valor;
+}
+
+// Verificar si está vacía
+bool DDQueue::empty() const {
+    return items == 0;
+}
