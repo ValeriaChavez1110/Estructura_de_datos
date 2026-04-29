@@ -1,0 +1,26 @@
+//Valeria Chavez
+#include <iostream>
+#include "DDQueue.h"
+using namespace std;
+
+int main() {
+    DDQueue cola;
+
+    // Insertar A-Z atrás
+    for (char c = 'A'; c <= 'Z'; c++) {
+        cola.put_back(c);
+    }
+
+    // Insertar 9-0 adelante
+    for (int i = 9; i >= 0; i--) {
+        cola.put_front(i + '0');
+    }
+
+    // Vaciar con get_front
+    while (!cola.empty()) {
+        cout << cola.get_front() << " ";
+    }
+
+    cout << "\nFin\n";
+    return 0;
+}
