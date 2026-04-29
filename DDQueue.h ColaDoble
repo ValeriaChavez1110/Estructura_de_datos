@@ -1,0 +1,19 @@
+#pragma once
+#include "Nodo.h"
+
+class DDQueue {
+private:
+    Nodo* cabeza;
+    Nodo* cola;
+    int items;
+
+public:
+    DDQueue();
+    ~DDQueue();
+
+    void put_back(DATA_TYPE valor);
+    void put_front(DATA_TYPE valor);
+
+    DATA_TYPE get_front(); 
+    bool empty() const;
+};
