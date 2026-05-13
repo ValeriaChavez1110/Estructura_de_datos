@@ -1,0 +1,102 @@
+#include <iostream>
+
+#include "ABAmigo.h"
+
+using namespace std;
+
+int main() {
+
+    ABAmigo sistema("amigos.dat");
+
+    int opcion;
+
+    do {
+
+        system("cls");
+
+        cout << "\n===================================";
+        cout << "\n        SISTEMA DE AMIGOS";
+        cout << "\n===================================";
+
+        cout << "\n1. Adicionar amigo";
+        cout << "\n2. Listar amigos";
+        cout << "\n3. Buscar amigo";
+        cout << "\n4. Eliminar amigo";
+        cout << "\n5. Modificar amigo";
+        cout << "\n0. Salir";
+
+        cout << "\n\nSeleccione opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+
+        case 1:
+
+            system("cls");
+
+            cout << "\n=== ADICIONAR AMIGO ===\n";
+
+            sistema.adicionarNuevo();
+
+            break;
+
+        case 2:
+
+            system("cls");
+
+            cout << "\n=== LISTA DE AMIGOS ===\n";
+
+            sistema.listar();
+
+            break;
+
+        case 3:
+
+            system("cls");
+
+            cout << "\n=== BUSCAR AMIGO ===\n";
+
+            sistema.buscarReg();
+
+            break;
+
+        case 4:
+
+            system("cls");
+
+            cout << "\n=== ELIMINAR AMIGO ===\n";
+
+            sistema.eliminarReg();
+
+            break;
+
+        case 5:
+
+            system("cls");
+
+            cout << "\n=== MODIFICAR AMIGO ===\n";
+
+            sistema.modificarReg();
+
+            break;
+
+        case 0:
+
+            cout << "\nSaliendo del sistema...\n";
+
+            break;
+
+        default:
+
+            cout << "\nOpcion invalida";
+        }
+
+        if (opcion != 0) {
+
+            system("pause");
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
