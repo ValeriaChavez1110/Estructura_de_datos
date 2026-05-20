@@ -1,0 +1,37 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include "Rectangulo.h"
+#include "Triangulo.h"
+
+
+using namespace std;
+
+int main(void) {
+   Rectangulo Rect;
+   int base, altura;
+ 
+   Rect.setWidth(5);
+   Rect.setHeight(7);
+
+   // Muestra el área de un rectangulo
+   cout << "Total area: " << Rect.getArea() << endl;
+   Triangulo Tri;
+   cout << "Ingrese el dato de la base: ";
+   cin >> base;
+   cout << "Ingrese el dato de la altura: ";
+   cin >> altura;
+   Tri.setWidth(base);
+   Tri.setHeight(altura);
+   cout << "Total area del triangulo es: " << Tri.getArea() << endl;
+
+   Triangulo Vale;
+   cout << "Ingrese el dato de la base: ";
+   cin >> base;
+   cout << "Ingrese el dato de la altura: ";
+   cin >> altura;
+   Vale.setWidth(base);
+   Vale.setHeight(altura);
+   cout << "Total area del triangulo es: " << Vale.getArea() << endl;
+   return 0;
+}
