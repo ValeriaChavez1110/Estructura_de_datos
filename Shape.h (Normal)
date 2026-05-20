@@ -1,0 +1,10 @@
+#pragma once
+// Base class
+class Shape {
+protected:
+      int ancho;
+      int alto;   
+public:
+      void setWidth(int w);
+      void setHeight(int h);
+};
