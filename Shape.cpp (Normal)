@@ -1,0 +1,10 @@
+#include "StdAfx.h"
+#include "Shape.h"
+
+
+ void Shape::setWidth(int w) {
+         ancho = w;
+      }
+ void Shape::setHeight(int h) {
+         alto = h;
+      }
